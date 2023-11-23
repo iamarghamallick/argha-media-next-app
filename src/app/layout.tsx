@@ -23,7 +23,7 @@ export default function RootLayout({
         <Header />
         <div className="container flex flex-col md:flex-row">
           <SideMenu />
-          <div>{children}</div>
+          <div className='w-full'>{children}</div>
         </div>
         <Footer />
       </body>

@@ -1,14 +1,9 @@
 "use client";
 
-import { CldImage, CldUploadButton } from 'next-cloudinary'
-import { useState } from 'react';
-
 export default function Home() {
-  const [imageId, setImageId] = useState("");
-
   return (
-    <main className="min-h-screen">
-      <h1>Gallery</h1>
+    <main className="min-h-screen flex justify-center items-center">
+      <h1 className="text-center">Welcome to Argha Media</h1>
     </main>
   )
 }
