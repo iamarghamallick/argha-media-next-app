@@ -8,5 +8,4 @@ export async function setAsFavoriteAction(public_id: string, isFavorited: boolea
         await cloudinary.v2.uploader.remove_tag("favorite", [public_id])
         :
         await cloudinary.v2.uploader.add_tag("favorite", [public_id]);
-    revalidatePath("/gallery");
 }

@@ -3,15 +3,15 @@
 import Heart from "@/components/icons/Heart";
 import { CldImage } from "next-cloudinary";
 import { setAsFavoriteAction } from "./actions";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { SearchResult } from "./page";
 import FullHeart from "@/components/icons/FullHeart";
 
-export function CloudinaryImage(props: any & { imagedata: SearchResult }) {
+export function CloudinaryImage(props: any & { imagedata: SearchResult; }) {
     const { imagedata } = props;
 
     const [transition, startTransition] = useTransition();
-    const isFavorited = imagedata.tags.includes("favorite");
+    const [isFavorited, setIsFavorited] = useState(imagedata.tags.includes("favorite"));
 
     return (
         <div className="relative">
@@ -20,6 +20,7 @@ export function CloudinaryImage(props: any & { imagedata: SearchResult }) {
                 <FullHeart
                     onClick={() => {
                         startTransition(() => {
+                            setIsFavorited(!isFavorited);
                             setAsFavoriteAction(imagedata.public_id, true)
                         })
                     }}
@@ -28,6 +29,7 @@ export function CloudinaryImage(props: any & { imagedata: SearchResult }) {
                 <Heart
                     onClick={() => {
                         startTransition(() => {
+                            setIsFavorited(!isFavorited);
                             setAsFavoriteAction(imagedata.public_id, false)
                         })
                     }}
