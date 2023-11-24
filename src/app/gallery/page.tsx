@@ -1,16 +1,19 @@
 import cloudinary from "cloudinary";
 import { CloudinaryImage } from './CloudinaryImage';
 
-type SearchResult = {
+export type SearchResult = {
     public_id: string;
+    tags: string[];
 };
 
 export default async function GalleryPage() {
     const results = (await cloudinary.v2.search
         .expression('resource_type:image')
         .sort_by('created_at', 'desc')
-        .max_results(10)
+        .with_field("tags")
+        .max_results(2)
         .execute()) as { resources: SearchResult[] };
+    console.log(results);
 
     return (
         <section className="min-h-screen p-4">
@@ -19,7 +22,7 @@ export default async function GalleryPage() {
                 {results.resources.map((result) => (
                     <CloudinaryImage
                         key={result.public_id}
-                        src={result.public_id}
+                        imagedata={result}
                         height={400}
                         width={500}
                         alt="argha media"
