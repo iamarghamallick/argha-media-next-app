@@ -1,11 +1,7 @@
 import cloudinary from "cloudinary";
 import ForceRefresh from "@/components/ForceRefresh";
 import ImageGrid from "@/components/ImageGrid";
-
-export type SearchResult = {
-    public_id: string;
-    tags: string[];
-};
+import { SearchResult } from "../gallery/page";
 
 export default async function GalleryPage() {
     const results = (await cloudinary.v2.search
