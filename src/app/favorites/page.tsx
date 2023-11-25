@@ -1,6 +1,5 @@
 import cloudinary from "cloudinary";
-import { CloudinaryImage } from "../gallery/CloudinaryImage";
-import ForceRefresh from "@/components/force-refresh";
+import ForceRefresh from "@/components/ForceRefresh";
 import ImageGrid from "@/components/ImageGrid";
 
 export type SearchResult = {
@@ -23,5 +22,5 @@ export default async function GalleryPage() {
             <h1 className='font-bold text-3xl border-b-2 pb-2 mt-2'>Favorites</h1>
             <ImageGrid images={results.resources} />
         </section>
-    )
+    );
 }

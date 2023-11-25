@@ -1,5 +1,5 @@
 import cloudinary from "cloudinary";
-import ForceRefresh from "@/components/force-refresh";
+import ForceRefresh from "@/components/ForceRefresh";
 import ImageGrid from "@/components/ImageGrid";
 
 export type SearchResult = {

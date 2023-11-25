@@ -1,4 +1,4 @@
-import { CloudinaryImage } from "@/app/gallery/CloudinaryImage";
+import { CloudinaryImage } from "@/components/CloudinaryImage";
 import { SearchResult } from "@/app/gallery/page";
 
 export default function ImageGrid({ images }: { images: SearchResult[] }) {
