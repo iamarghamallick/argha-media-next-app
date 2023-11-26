@@ -49,7 +49,7 @@ export function CloudinaryImage(props: any & { imagedata: SearchResult; }) {
                         })
                     }}
                     className="absolute top-1 left-1" />}
-            <ShareDialog />
+            <ShareDialog filename={imagedata.filename} />
         </div>
     )
 }

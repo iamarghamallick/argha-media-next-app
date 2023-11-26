@@ -10,7 +10,7 @@ const SideMenu = () => {
     const toggleSideMenu = () => { setShowMenuBar(!showMenuBar); }
 
     return (
-        <div className="pb-12 md:block md:w-1/5 md:border-r-2">
+        <div className="pb-0 md:pb-12 md:block md:w-1/5 md:border-r-2">
             <div className='md:hidden fixed top-4 left-4 z-20' onClick={toggleSideMenu}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="mr-2 w-8 h-8 bg-gray-800 rounded-sm">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />

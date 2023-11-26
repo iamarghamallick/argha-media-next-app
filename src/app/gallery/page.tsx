@@ -20,7 +20,7 @@ export default async function GalleryPage({ searchParams: { search } }: { search
     return (
         <section className="min-h-screen p-4">
             <ForceRefresh />
-            <h1 className='font-bold text-3xl border-b-2 pb-2 mt-2'>
+            <h1 className='font-bold text-xl md:text-3xl border-b-2 pb-2 mt-2'>
                 {search && `Showing result for "${search}"`}
                 {!search && "Latest Posts"}
             </h1>
