@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import { Button } from './ui/button'
 import classNames from 'classnames';
 import Link from 'next/link';
-import Album from './icons/Album';
 
 const SideMenu = () => {
     const [showMenuBar, setShowMenuBar] = useState(false);

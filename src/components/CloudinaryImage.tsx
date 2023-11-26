@@ -27,7 +27,8 @@ export function CloudinaryImage(props: any & { imagedata: SearchResult; }) {
 
     return (
         <div className="relative">
-            <Link href={"/images/" + getDesiredPart(imagedata.public_id)}>
+            {/* handled on ViewPost Component  */}
+            <Link href={"/view?post=" + getDesiredPart(imagedata.public_id)}>
                 <CldImage {...props} src={imagedata.public_id} />
             </Link>
             {isFavorited ?

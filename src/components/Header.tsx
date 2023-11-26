@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Header = () => {
     return (
-        <div className="border-b md:container mx-auto bg-slate-950 sticky top-0 z-10">
+        <div className="border-b md:container mx-auto bg-slate-700 sticky top-0 z-10">
             <div className="flex h-16 items-center justify-between px-4">
                 <div className='invisible md:hidden'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="mr-2 w-8 h-8 bg-gray-800 rounded-sm">
