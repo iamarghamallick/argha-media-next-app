@@ -2,7 +2,7 @@
 
 import { CldImage } from "next-cloudinary";
 
-export default function GetFullImage({ params }: { params: { public_id: string } }) {
+export default async function GetFullImage({ params }: { params: { public_id: string } }) {
     return (
         <section>
             <h1>{params.public_id}</h1>

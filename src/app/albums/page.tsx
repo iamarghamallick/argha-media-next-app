@@ -14,7 +14,7 @@ export default async function AlbumsPage() {
     return (
         <section className="min-h-screen p-4">
             <h1 className='font-bold text-3xl border-b-2 pb-2 mt-2 mb-8'>Albums</h1>
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {folders.map((folder) => (
                     <AlbumCard key={folder.path} folder={folder} />
                 ))}

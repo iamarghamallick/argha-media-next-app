@@ -6,8 +6,8 @@ import { setAsFavoriteAction } from "../app/gallery/actions";
 import { useState, useTransition } from "react";
 import { SearchResult } from "../app/gallery/page";
 import FullHeart from "@/components/icons/FullHeart";
-import Share from "./icons/Share";
 import Link from "next/link";
+import ShareDialog from "./ShareDialog";
 
 export function CloudinaryImage(props: any & { imagedata: SearchResult; }) {
     const { imagedata } = props;
@@ -15,9 +15,21 @@ export function CloudinaryImage(props: any & { imagedata: SearchResult; }) {
     const [transition, startTransition] = useTransition();
     const [isFavorited, setIsFavorited] = useState(imagedata.tags.includes("favorite"));
 
+    const getDesiredPart = (orgPath: string) => {
+        let regex = /\/(.+)/;
+        let match = orgPath.match(regex);
+        if (match) {
+            return match[1];
+        } else {
+            return orgPath;
+        }
+    }
+
     return (
         <div className="relative">
-            <Link href={"/images/" + imagedata.public_id}><CldImage {...props} src={imagedata.public_id} /></Link>
+            <Link href={"/images/" + getDesiredPart(imagedata.public_id)}>
+                <CldImage {...props} src={imagedata.public_id} />
+            </Link>
             {isFavorited ?
                 <FullHeart
                     onClick={() => {
@@ -36,7 +48,7 @@ export function CloudinaryImage(props: any & { imagedata: SearchResult; }) {
                         })
                     }}
                     className="absolute top-1 left-1" />}
-            <Share className="absolute top-1 right-1 bg-slate-950/[.3] p-1 rounded-sm" />
+            <ShareDialog />
         </div>
     )
 }

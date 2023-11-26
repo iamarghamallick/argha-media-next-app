@@ -11,12 +11,13 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import Share from "./icons/Share"
 
 export default function ShareDialog() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="ghost" className="w-full">Share</Button>
+                <Share className="cursor-pointer absolute top-1 right-1 bg-slate-950/[.3] p-1 rounded-sm" />
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
@@ -32,7 +33,7 @@ export default function ShareDialog() {
                         </Label>
                         <Input
                             id="link"
-                            defaultValue="https://ui.shadcn.com/docs/installation"
+                            defaultValue={`https://ui.shadcn.com/docs/installation`}
                             readOnly
                         />
                     </div>
