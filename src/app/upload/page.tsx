@@ -15,7 +15,7 @@ export default function UploadPage() {
     const [imageId, setImageId] = useState("jagiue4eb1yyactjmfy0");
 
     return (
-        <main className="min-h-screen flex flex-col mt-6 items-center gap-2">
+        <section className="min-h-screen flex flex-col mt-6 items-center gap-2">
             <CldUploadButton onUpload={(result: UploadResult) => {
                 console.log(result);
                 setImageId(result.info.public_id);
@@ -34,6 +34,6 @@ export default function UploadPage() {
                 />
                 <AddToAlbumDialog imageId={imageId} />
             </div>}
-        </main>
-    )
+        </section>
+    );
 }
