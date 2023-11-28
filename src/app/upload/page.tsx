@@ -12,15 +12,24 @@ export type UploadResult = {
 };
 
 export default function UploadPage() {
-    const [imageId, setImageId] = useState("jagiue4eb1yyactjmfy0");
+    const UPLOAD_PRESET = process.env.NEXT_PUBLIC_UPLOAD_PRESET;
+    const [imageId, setImageId] = useState("");
 
     return (
         <section className="min-h-screen flex flex-col mt-6 items-center gap-2">
+            <CldImage
+                width="320"
+                height="320"
+                src={"bjn2wpgm9vc54ocymt5o"}
+                sizes="100vw"
+                alt="argha media"
+                className='mt-2 mb-4'
+            />
             <CldUploadButton onUpload={(result: UploadResult) => {
                 console.log(result);
                 setImageId(result.info.public_id);
             }}
-                uploadPreset="xqzutzk0"
+                uploadPreset={UPLOAD_PRESET}
                 className='p-2 rounded-sm bg-slate-700'
             />
             {imageId && <div>
