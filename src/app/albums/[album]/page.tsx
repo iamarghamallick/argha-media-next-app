@@ -19,9 +19,9 @@ export default async function AlbumPage({
 
     return (
         <section className="min-h-screen p-4">
-            <h1 className='font-bold text-3xl border-b-2 pb-2 mt-2'>{params.album}</h1>
+            <h1 className='font-bold text-3xl border-b-2 pb-2 mt-2'>{`${params.album} (${results.resources.length})`}</h1>
             <ImageGrid images={results.resources} />
-            <LoadMoreImages currRoute={`/albums/${params.album}`} pagesize={pagesize ? pagesize : 4} />
+            <LoadMoreImages q="" currRoute={`/albums/${params.album}`} pagesize={pagesize ? pagesize : 4} />
         </section>
     );
 }

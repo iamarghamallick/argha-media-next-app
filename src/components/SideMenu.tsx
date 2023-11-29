@@ -83,7 +83,7 @@ const SideMenu = ({ folderNames }: { folderNames: Folder[] }) => {
                     </div>
                 </div>
                 <div className="px-3 py-2">
-                    <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+                    <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight hover:bg-slate-700 rounded-md p-2">
                         <Link href="/upload">Upload</Link>
                     </h2>
                 </div>
