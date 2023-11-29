@@ -13,7 +13,7 @@ export default function DisplayPost({ images }: { images: SearchResult[] }) {
         <div className="flex justify-center items-center mt-6">
             {[
                 getCols(0)
-            ].map(col => <div className="">
+            ].map(col => <div key={col.length}>
                 {col.map((result, idx) => (
                     <CloudinaryImage
                         key={result.filename}

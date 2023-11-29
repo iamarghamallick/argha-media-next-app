@@ -1,7 +1,7 @@
 import ForceRefresh from "@/components/ForceRefresh";
 import ImageGrid from "@/components/ImageGrid";
-import { fetchImages } from "./actions";
 import LoadMoreImages from "@/components/LoadMoreImages";
+import cloudinary from "cloudinary";
 
 export type SearchResult = {
     public_id: string;
@@ -12,9 +12,15 @@ export type SearchResult = {
 export default async function GalleryPage({
     searchParams: { search, pagesize }
 }: {
-    searchParams: { search: string, pagesize: string }
+    searchParams: { search: string, pagesize: number }
 }) {
-    const results = await fetchImages("", search ? search : "") as { next_cursor: string, resources: SearchResult[] };
+    const results = (await cloudinary.v2.search
+        .expression(`resource_type:image${search ? ` AND tags=${search}` : ""}`)
+        .sort_by('created_at', 'desc')
+        .with_field("tags")
+        .max_results(pagesize ? pagesize : 4)
+        .execute()) as { resources: SearchResult[] };
+    console.log(results);
 
     return (
         <section className="min-h-screen p-4">
@@ -24,7 +30,7 @@ export default async function GalleryPage({
                 {!search && `Latest Posts (${results.resources.length})`}
             </h1>
             <ImageGrid images={results.resources} />
-            <LoadMoreImages cursor={results.next_cursor} />
+            <LoadMoreImages pagesize={pagesize ? pagesize : 4} />
         </section>
     );
 }

@@ -1,33 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
-import { fetchImages } from "@/app/gallery/actions";
-import { SearchResult } from "@/app/gallery/page";
-import ImageGrid from "./ImageGrid";
+import Link from "next/link";
 
-export default function LoadMoreImages({ cursor }: { cursor: string }) {
-    const [nextCursor, setNextCursor] = useState("");
-    const [fetchedResults, setFetchedResults] = useState({ next_cursor: "", resources: [] } as { next_cursor: string, resources: SearchResult[]; });
-
-    const combineResult = (arr1: SearchResult[], arr2: SearchResult[]) => {
-        return [...arr1, ...arr2];
-    }
-
-    const handleClick = async () => {
-        await fetchImages(nextCursor === "" ? cursor : nextCursor, "").then((results) => {
-            setFetchedResults({ next_cursor: results.next_cursor, resources: combineResult(fetchedResults.resources, results.resources) });
-            setNextCursor(fetchedResults.next_cursor);
-            console.log(fetchedResults.resources);
-        })
-    }
-
+export default function LoadMoreImages({ pagesize }: { pagesize: number }) {
     return (
-        <div>
-            {fetchedResults.resources && <ImageGrid images={fetchedResults.resources} />}
-            <div className="m-8 flex justify-center">
-                <Button onClick={handleClick} variant="secondary" className="text-center">Load More</Button>
-            </div>
+        <div className="mt-8 mb-8 flex justify-between">
+            <Link href={`/gallery?pagesize=${Number(pagesize) - 4 <= 0 ? 4 : Number(pagesize) - 4}`}>
+                <Button variant="secondary" className="text-center" disabled={!pagesize || pagesize == 4}><ArrowLeft />&nbsp;&nbsp; Prev</Button>
+            </Link>
+            <Link href={`/gallery?pagesize=${Number(pagesize) + 4}`}>
+                <Button variant="secondary" className="text-center">Next &nbsp;&nbsp;<ArrowRight /></Button>
+            </Link>
         </div>
     );
 }

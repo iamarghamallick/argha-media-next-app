@@ -18,7 +18,7 @@ export default async function GalleryPage() {
             <ForceRefresh />
             <h1 className='font-bold text-3xl border-b-2 pb-2 mt-2'>Favorites</h1>
             <ImageGrid images={results.resources} />
-            <LoadMoreImages cursor={results.next_cursor} />
+            {/* <LoadMoreImages cursor={results.next_cursor} /> */}
         </section>
     );
 }
