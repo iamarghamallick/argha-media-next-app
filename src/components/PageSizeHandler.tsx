@@ -9,12 +9,13 @@ import { useRouter } from "next/navigation";
 const PageSizeHandler = () => {
     const [pageSize, setPageSize] = useState("");
     const router = useRouter();
+    const currPath = window.location.pathname;
 
     return (
         <form
             onSubmit={(e) => {
                 e.preventDefault();
-                router.replace(`/gallery?pagesize=${encodeURIComponent(pageSize)}`);
+                router.replace(`${currPath}?pagesize=${encodeURIComponent(pageSize)}`);
                 router.refresh();
             }}
             className="p-2 m-1 bg-slate-800 rounded-md w-full"
