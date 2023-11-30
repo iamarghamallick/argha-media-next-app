@@ -22,7 +22,6 @@ export default function UploadPage() {
         }
     }, [])
 
-
     const UPLOAD_PRESET = process.env.NEXT_PUBLIC_UPLOAD_PRESET;
     const [imageId, setImageId] = useState("");
 
@@ -42,6 +41,11 @@ export default function UploadPage() {
                 className='mt-2 mb-4'
             />
             <CldUploadButton
+                onUpload={(data) => {
+                    const uploadedData = data as UploadResult;
+                    // console.log(uploadedData.info.public_id);
+                    setImageId(uploadedData.info.public_id);
+                }}
                 uploadPreset={UPLOAD_PRESET}
                 className='p-2 rounded-sm bg-slate-700'
             />
