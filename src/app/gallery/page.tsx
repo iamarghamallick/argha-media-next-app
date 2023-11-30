@@ -30,7 +30,7 @@ export default async function GalleryPage({
                 {!search && `Latest Posts (${results.resources.length})`}
             </h1>
             <ImageGrid images={results.resources} />
-            <LoadMoreImages currRoute={`/gallery`} pagesize={pagesize ? pagesize : 4} />
+            <LoadMoreImages q="" currRoute={`/gallery`} pagesize={pagesize ? pagesize : 4} />
         </section>
     );
 }

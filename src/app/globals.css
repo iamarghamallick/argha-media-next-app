@@ -64,6 +64,26 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #003366;
+    border-radius: 2px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #334155;
+    border-radius: 8px;
+    border: 1px solid #997a00;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #997a00;
+  }
 }
 
 @layer base {

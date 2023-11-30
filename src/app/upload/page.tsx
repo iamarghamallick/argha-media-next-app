@@ -1,8 +1,11 @@
 "use client";
 
 import AddToAlbumDialog from '@/components/AddToAlbumDialog';
+import { Button } from '@/components/ui/button';
 import { CldImage, CldUploadButton } from 'next-cloudinary'
-import { useState } from 'react';
+import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export type UploadResult = {
     info: {
@@ -12,8 +15,21 @@ export type UploadResult = {
 };
 
 export default function UploadPage() {
+    const router = useRouter();
+    useEffect(() => {
+        if (localStorage.getItem('login') !== 'true') {
+            redirect("/login");
+        }
+    }, [])
+
+
     const UPLOAD_PRESET = process.env.NEXT_PUBLIC_UPLOAD_PRESET;
     const [imageId, setImageId] = useState("");
+
+    const handleLogout = () => {
+        localStorage.removeItem('login');
+        router.replace("/login");
+    }
 
     return (
         <section className="min-h-screen flex flex-col mt-6 items-center gap-2">
@@ -43,6 +59,7 @@ export default function UploadPage() {
                 />
                 <AddToAlbumDialog imageId={imageId} />
             </div>}
+            <Button className='mt-8' onClick={handleLogout}>Logout</Button>
         </section>
     );
 }
