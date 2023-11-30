@@ -15,20 +15,6 @@ export const metadata: Metadata = {
   description: "Capturing life's essence through the art of photography, where every frame tells a unique story",
 }
 
-// export async function getFolderNames() {
-//   const { folders } = (await cloudinary.v2.api.root_folders()) as {
-//     folders: Folder[];
-//   };
-
-//   console.log(folders)
-
-//   return {
-//     props: {
-//       folderNames: "folders",
-//     },
-//   };
-// }
-
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { folders } = (await cloudinary.v2.api.root_folders()) as {
     folders: Folder[];
@@ -37,7 +23,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" className='dark'>
       <body className={`${inter.className} dark:bg-slate-950`}>
         <Header />
-        <div className="container flex items-center justify-center">
+        <div className="sm:w-screen md:container flex items-center justify-center">
           <SearchForm />
         </div>
         <div className="container flex flex-col md:flex-row">

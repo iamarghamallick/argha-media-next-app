@@ -20,9 +20,9 @@ export default async function GalleryPage({
     return (
         <section className="min-h-screen p-4">
             <ForceRefresh />
-            <h1 className='font-bold text-3xl border-b-2 pb-2 mt-2'>Favorites</h1>
+            <h1 className='font-bold text-3xl border-b-2 pb-2 mt-2'>{`Favorites (${results.resources.length})`}</h1>
             <ImageGrid images={results.resources} />
-            <LoadMoreImages q="" currRoute={`/favorite`} pagesize={pagesize ? pagesize : 4} />
+            <LoadMoreImages q="" currRoute={`/favorites`} pagesize={pagesize ? pagesize : 4} />
         </section>
     );
 }

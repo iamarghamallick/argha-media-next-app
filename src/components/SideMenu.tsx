@@ -22,26 +22,26 @@ const SideMenu = ({ folderNames }: { folderNames: Folder[] }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
                 </svg>
             </div>
-            <div className={classNames({ 'hidden': !showMenuBar, 'block': showMenuBar, 'space-y-4': true, 'py-4': true, 'md:block': true })}>
+            <div className={classNames({ 'hidden': !showMenuBar, 'fixed top-16 left-0 overflow-y-scroll z-10 h-screen pb-16 bg-slate-700 no-scrollbar': showMenuBar, 'space-y-4': true, 'py-4': true, 'md:block': true })}>
                 <div className="px-3 py-2">
                     <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
                         Gallery
                     </h2>
                     <div className="space-y-1">
                         <Link href="/gallery">
-                            <Button variant="ghost" className="w-full justify-start">
+                            <Button onClick={() => setShowMenuBar(showMenuBar && true ? false : showMenuBar)} variant="ghost" className="w-full justify-start">
                                 <ArrowCircled />
                                 Latest
                             </Button>
                         </Link>
                         <Link href="/favorites">
-                            <Button variant="ghost" className="w-full justify-start">
+                            <Button onClick={() => setShowMenuBar(showMenuBar && true ? false : showMenuBar)} variant="ghost" className="w-full justify-start">
                                 <LoveIcon />
                                 Favorites
                             </Button>
                         </Link>
                         <Link href="/albums">
-                            <Button variant="ghost" className="w-full justify-start">
+                            <Button onClick={() => setShowMenuBar(showMenuBar && true ? false : showMenuBar)} variant="ghost" className="w-full justify-start">
                                 <AlbumIcon />
                                 Albums
                             </Button>
@@ -55,7 +55,7 @@ const SideMenu = ({ folderNames }: { folderNames: Folder[] }) => {
                     <div className="space-y-1">
                         {folderNames.map((folder) => (
                             <Link key={folder.name} href={`/albums/${folder.name}`}>
-                                <Button variant="ghost" className="w-full justify-start">
+                                <Button onClick={() => setShowMenuBar(showMenuBar && true ? false : showMenuBar)} variant="ghost" className="w-full justify-start">
                                     <ArrowRight />
                                     {folder.name}
                                 </Button>
@@ -69,13 +69,13 @@ const SideMenu = ({ folderNames }: { folderNames: Folder[] }) => {
                     </h2>
                     <div className="space-y-1">
                         <Link href={`/archive/2022`}>
-                            <Button variant="ghost" className="w-full justify-start">
+                            <Button onClick={() => setShowMenuBar(showMenuBar && true ? false : showMenuBar)} variant="ghost" className="w-full justify-start">
                                 <ArchiveIcon />
                                 2022
                             </Button>
                         </Link>
                         <Link href={`/archive/2021`}>
-                            <Button variant="ghost" className="w-full justify-start">
+                            <Button onClick={() => setShowMenuBar(showMenuBar && true ? false : showMenuBar)} variant="ghost" className="w-full justify-start">
                                 <ArchiveIcon />
                                 2021
                             </Button>
@@ -84,7 +84,7 @@ const SideMenu = ({ folderNames }: { folderNames: Folder[] }) => {
                 </div>
                 <div className="px-3 py-2">
                     <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight hover:bg-slate-700 rounded-md p-2">
-                        <Link href="/upload">Upload</Link>
+                        <Link href="/upload" onClick={() => setShowMenuBar(showMenuBar && true ? false : showMenuBar)}>Upload</Link>
                     </h2>
                 </div>
             </div>
