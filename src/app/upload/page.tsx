@@ -41,10 +41,7 @@ export default function UploadPage() {
                 alt="argha media"
                 className='mt-2 mb-4'
             />
-            <CldUploadButton onUpload={(result: UploadResult) => {
-                console.log(result);
-                setImageId(result.info.public_id);
-            }}
+            <CldUploadButton
                 uploadPreset={UPLOAD_PRESET}
                 className='p-2 rounded-sm bg-slate-700'
             />
