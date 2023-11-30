@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 import jwt from "jsonwebtoken"
 import { CldImage } from "next-cloudinary";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
     const [username, setUsername] = useState<string>("");

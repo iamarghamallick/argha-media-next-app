@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
-import jwt from "jsonwebtoken";
+import jwt, { Secret } from "jsonwebtoken";
 
-const KEY = 'thisismyjwtsecretwfgyrfgeuihmdxoiwqmhgyneurhcjmegrqomjwicfgyrfgurgnfiuhqwixjorfgnru';
+const KEY = process.env.JWT_SECRET as Secret;
 
 export async function POST(req: Request, res: Response) {
     const { username, password } = await req.json();
@@ -11,7 +11,7 @@ export async function POST(req: Request, res: Response) {
     return NextResponse.json({
         token: jwt.sign({
             username,
-            admin: username === 'admin' && password === 'admin'
+            admin: username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD
         }, KEY)
     })
 }
