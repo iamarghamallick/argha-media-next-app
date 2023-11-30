@@ -21,11 +21,11 @@ export default function ImageMenu() {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuItem asChild>
-                    <ViewDetailsDialog />
+                    <ViewDetailsDialog imageId="" />
                 </DropdownMenuItem>
                 <br />
                 <DropdownMenuItem asChild>
-                    <ShareDialog />
+                    <ShareDialog filename="" />
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
