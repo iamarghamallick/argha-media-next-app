@@ -43,7 +43,7 @@ export default async function GalleryPage({ searchParams: { post } }: { searchPa
 
     return (
         <section className="min-h-screen p-4">
-            {results.resources && post && <>
+            {results.resources && post && meta && meta.folder && <>
                 <DisplayPost images={results.resources} />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                     <div className="flex justify-center items-center bg-slate-600 rounded-md p-2">
@@ -63,9 +63,10 @@ export default async function GalleryPage({ searchParams: { post } }: { searchPa
                     <h1 className="font-bold">Tags</h1>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
                         {meta.tags.map((tag) => {
-                            return <p key={tag} className="text-center bg-slate-700 hover:bg-slate-600 p-2 rounded-md">{tag}</p>
+                            return <Link key={tag} href={`/search?q=${tag}`}><p className="text-center bg-slate-700 hover:bg-slate-700/[0.5] p-2 rounded-md">{tag}</p></Link>
                         })}
                     </div>
+                    <p className="mt-2 font-thin text-center">Employs cutting-edge AI-driven auto-tagging capabilities.</p>
                 </div>
             </>}
             {results.resources.length === 0 && <div className="flex flex-col gap-8 justify-center items-center">

@@ -14,7 +14,7 @@ const SearchForm = () => {
         <form
             onSubmit={(e) => {
                 e.preventDefault();
-                router.replace(`/search?q=${encodeURIComponent(tagName)}&pagesize=4`);
+                router.replace(`/search?q=${encodeURIComponent(tagName.toLowerCase())}&pagesize=4`);
                 router.refresh();
             }}
             className="p-2 m-1 bg-slate-800 rounded-md w-full"

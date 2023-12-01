@@ -6,6 +6,7 @@ import { CldImage, CldUploadButton } from 'next-cloudinary'
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { verifyToken } from '../login/verifyToken';
 
 export type UploadResult = {
     info: {
@@ -17,7 +18,11 @@ export type UploadResult = {
 export default function UploadPage() {
     const router = useRouter();
     useEffect(() => {
-        if (localStorage.getItem('login') !== 'true') {
+        if (localStorage.getItem('login') !== 'true' || localStorage.getItem('token') === null) {
+            redirect("/login");
+        }
+        const token = localStorage.getItem('token') as string;
+        if (!(token && verifyToken(token))) {
             redirect("/login");
         }
     }, [])

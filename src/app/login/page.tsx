@@ -3,9 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
-import jwt from "jsonwebtoken"
 import { CldImage } from "next-cloudinary";
 import { useRouter } from "next/navigation";
+import { verifyToken } from "./verifyToken";
 
 const LoginPage = () => {
     const [username, setUsername] = useState<string>("");
@@ -16,9 +16,11 @@ const LoginPage = () => {
     const router = useRouter();
 
     useEffect(() => {
-        if (localStorage.getItem('login') === 'true') {
-            setLogin('true');
-            setMessage('Welcome Admin')
+        if (localStorage.getItem('login') === 'true' && localStorage.getItem('token') !== null) {
+            if (verifyToken(localStorage.getItem('token') as string)) {
+                setLogin('true');
+                setMessage('Welcome Admin')
+            }
         }
     }, [])
 
@@ -35,14 +37,14 @@ const LoginPage = () => {
             }).then(t => t.json())
 
             const { token } = res;
-            console.log(token);
+            // console.log(token);
 
             if (token) {
-                const data = jwt.decode(token) as { admin: boolean };
-                if (data.admin) {
+                if (verifyToken(token)) {
                     setMessage("Welcome Admin");
                     setLogin('true');
                     localStorage.setItem('login', 'true');
+                    localStorage.setItem('token', token);
                     setTimeout(() => {
                         router.replace("/upload")
                     }, 2000);
@@ -51,7 +53,7 @@ const LoginPage = () => {
             }
 
         } catch (err) {
-            console.error(err);
+            // console.error(err);
             setMessage("Something went wrong!");
         }
     };

@@ -6,7 +6,7 @@ const KEY = process.env.JWT_SECRET as Secret;
 export async function POST(req: Request, res: Response) {
     const { username, password } = await req.json();
 
-    console.log({ username, password });
+    // console.log({ username, password });
 
     return NextResponse.json({
         token: jwt.sign({
