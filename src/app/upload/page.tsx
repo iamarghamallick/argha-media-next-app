@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { verifyToken } from '../login/verifyToken';
+import Image from "next/image"
 
 export type UploadResult = {
     info: {
@@ -37,13 +38,11 @@ export default function UploadPage() {
 
     return (
         <section className="min-h-screen flex flex-col mt-6 items-center gap-2">
-            <CldImage
-                width="320"
-                height="320"
-                src={"bjn2wpgm9vc54ocymt5o"}
-                sizes="100vw"
-                alt="argha media"
-                className='mt-2 mb-4'
+            <Image
+                src="/argha-mallick-photography-watermark.png"
+                width={500}
+                height={500}
+                alt="argha-mallick-photography"
             />
             <CldUploadButton
                 onUpload={(data) => {

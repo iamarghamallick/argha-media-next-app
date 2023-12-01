@@ -1,19 +1,17 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CldImage } from "next-cloudinary";
 import Link from "next/link";
+import Image from "next/image"
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col gap-4 justify-center items-center">
-      <CldImage
-        width="320"
-        height="320"
-        src={"bjn2wpgm9vc54ocymt5o"}
-        sizes="100vw"
-        alt="argha media"
-        className='mt-2 mb-4'
+      <Image
+        src="/argha-mallick-photography-watermark.png"
+        width={500}
+        height={500}
+        alt="argha-mallick-photography"
       />
       <h1 className="text-center">Welcome to Argha Media</h1>
       <Link href="/gallery"><Button variant="secondary">Explore my Gallery</Button></Link>
