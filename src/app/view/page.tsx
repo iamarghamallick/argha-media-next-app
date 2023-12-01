@@ -43,7 +43,7 @@ export default async function GalleryPage({ searchParams: { post } }: { searchPa
 
     return (
         <section className="min-h-screen p-4">
-            {results.resources && post && meta && meta.folder && <>
+            {results.resources && post && meta && <>
                 <DisplayPost images={results.resources} />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                     <div className="flex justify-center items-center bg-slate-600 rounded-md p-2">

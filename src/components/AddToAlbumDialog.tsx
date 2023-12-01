@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, } from "@/components/ui/dialog"
 import { Input } from "./ui/input";
 import { useEffect, useState } from "react";
-import addImageToAlbum from "./actions";
+import { addImageToAlbum } from "./actions";
 import { fetchFolders } from "@/app/upload/actions";
 import { Folder } from "@/app/albums/page";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./ui/select";
@@ -75,8 +75,8 @@ export default function AddToAlbumDialog({ imageId }: { imageId: string }) {
                     <Button
                         onClick={async () => {
                             // console.log(imageId);
-                            setOpen(false);
                             await addImageToAlbum(imageId, albumName);
+                            setOpen(false);
                         }}
                         type="submit"
                         disabled={alert !== ""}
