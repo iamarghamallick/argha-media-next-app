@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
-import { CldImage } from "next-cloudinary";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { verifyToken } from "./verifyToken";
 
@@ -88,13 +88,11 @@ const LoginPage = () => {
                     <Button onClick={handleLogin}>Submit</Button>
                 </form>}
                 {login === 'true' && <>
-                    <CldImage
-                        width="320"
-                        height="320"
-                        src={"bjn2wpgm9vc54ocymt5o"}
-                        sizes="100vw"
-                        alt="argha media"
-                        className='mt-2 mb-4'
+                    <Image
+                        src="/argha-mallick-photography-watermark.png"
+                        width={500}
+                        height={500}
+                        alt="argha-mallick-photography"
                     />
                     <Button onClick={handleLogout}>Logout</Button>
                 </>}

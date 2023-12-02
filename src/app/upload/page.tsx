@@ -64,7 +64,7 @@ export default function UploadPage() {
                 />
                 <AddToAlbumDialog imageId={imageId} />
             </div>}
-            <Button className='mt-8' onClick={handleLogout}>Logout</Button>
+            <Button className='mt-8 mb-8' onClick={handleLogout}>Logout</Button>
         </section>
     );
 }
